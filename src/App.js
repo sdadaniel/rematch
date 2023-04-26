@@ -1,8 +1,17 @@
 import "./App.css";
-import { connect } from "react-redux";
+import { connect, useSelector, useDispatch } from "react-redux";
 
 function App() {
-  return <CountContainer />;
+  const count = useSelector((s) => s.count);
+  const dispatch = useDispatch();
+  return (
+    <>
+      <CountContainer />
+      <br />
+      <div>{count}</div>
+      <button onClick={() => dispatch.count.increment(1)}>Increment</button>
+    </>
+  );
 }
 
 const Count = (props) => (
